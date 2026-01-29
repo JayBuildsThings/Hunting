@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jager Africa Hunting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        :root {
+            --brand-gold: #c5a059;
+            --brand-dark: #1a1a1a;
+            --brand-earth: #4a4036;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fdfbf7;
+            color: #333;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Scope Effect for the "Telescopic Photo" */
+        .scope-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 4px solid var(--brand-dark);
+            box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.8) inset; /* Fallback */
+        }
+
+        .scope-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.3) 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .crosshair-line {
+            background-color: rgba(255, 255, 255, 0.5);
+            position: absolute;
+        }
+        
+        .crosshair-h { width: 100%; height: 1px; }
+        .crosshair-v { height: 100%; width: 1px; }
+
+        .africa-map-path {
+            fill: #e5e7eb;
+            stroke: #4b5563;
+            stroke-width: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .africa-map-path:hover, .africa-map-path.active {
+            fill: var(--brand-gold);
+        }
+
+        /* Custom Texture Background */
+        .bg-texture {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="antialiased bg-texture min-h-screen flex flex-col">
+
+    <!-- Navigation (From Top of Sketch: JAGER AFRICA HUNTING) -->
+    <nav class="bg-stone-900 text-white py-6 px-4 border-b-4 border-[#c5a059]">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div>
+                <h1 class="text-2xl md:text-4xl font-black tracking-widest text-[#c5a059]">JAGER</h1>
+                <p class="text-sm tracking-[0.3em] text-gray-400">AFRICA HUNTING</p>
+            </div>
+            <div class="mt-4 md:mt-0 flex space-x-6 text-sm uppercase tracking-wider">
+                <a href="#experience" class="hover:text-[#c5a059] transition">Experience</a>
+                <a href="#location" class="hover:text-[#c5a059] transition">Location</a>
+                <a href="#contact" class="bg-[#c5a059] text-stone-900 px-4 py-2 font-bold hover:bg-white transition">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+        
+        <!-- Hero Section based on Sketch Layout -->
+        <section id="experience" class="max-w-6xl mx-auto px-4 py-12 md:py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Side: Content & Scribble Area -->
+                <div class="space-y-8">
+                    <div class="relative">
+                        <!-- Decorative Scribble/Bush effect behind text -->
+                        <div class="absolute -top-10 -left-10 w-40 h-40 bg-stone-200 rounded-full blur-3xl opacity-50 z-0"></div>
+                        
+                        <h2 class="relative z-10 text-5xl md:text-6xl font-bold text-stone-800 leading-tight">
+                            The African <br>
+                            <span class="text-[#c5a059]">Experience</span>
+                        </h2>
+                        
+                        <p class="relative z-10 mt-6 text-lg text-stone-600 italic">
+                            Immerse yourself in the wild. A journey of lifestyle, tradition, and nature.
+                        </p>
+
+                        <!-- Email Input from Sketch -->
+                        <div class="relative z-10 mt-8 max-w-md">
+                            <label class="block text-xs font-bold uppercase tracking-wide text-stone-500 mb-2">Contact Email</label>
+                            <div class="flex">
+                                <input type="email" placeholder="Enter your email" class="w-full bg-white border border-stone-300 p-3 outline-none focus:border-[#c5a059] focus:ring-1 focus:ring-[#c5a059] transition">
+                                <button class="bg-stone-900 text-white px-6 py-3 font-bold hover:bg-[#c5a059] transition">
+                                    JOIN
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sketch Grid: "Squares" -->
+                    <div class="grid grid-cols-4 gap-4 mt-12 pt-8 border-t border-stone-200">
+                        <!-- Square 1 -->
+                        <div class="text-center group cursor-pointer">
+                            <div class="w-full aspect-square bg-stone-200 mb-2 flex items-center justify-center group-hover:bg-[#c5a059] transition duration-300">
+                                <i data-lucide="crosshair" class="w-6 h-6 text-stone-600 group-hover:text-white"></i>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider">Hunt</span>
+                        </div>
+                        <!-- Square 2 -->
+                        <div class="text-center group cursor-pointer">
+                            <div class="w-full aspect-square bg-stone-200 mb-2 flex items-center justify-center group-hover:bg-[#c5a059] transition duration-300">
+                                <i data-lucide="tent-tree" class="w-6 h-6 text-stone-600 group-hover:text-white"></i>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider">Stay</span>
+                        </div>
+                        <!-- Square 3 -->
+                        <div class="text-center group cursor-pointer">
+                            <div class="w-full aspect-square bg-stone-200 mb-2 flex items-center justify-center group-hover:bg-[#c5a059] transition duration-300">
+                                <i data-lucide="utensils" class="w-6 h-6 text-stone-600 group-hover:text-white"></i>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider">Food</span>
+                        </div>
+                        <!-- Square 4 -->
+                        <div class="text-center group cursor-pointer">
+                            <div class="w-full aspect-square bg-stone-200 mb-2 flex items-center justify-center group-hover:bg-[#c5a059] transition duration-300">
+                                <i data-lucide="mountain" class="w-6 h-6 text-stone-600 group-hover:text-white"></i>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider">Land</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: The Map & Telescopic View -->
+                <div class="relative flex flex-col items-center justify-center">
+                    
+                    <!-- Map Removed -->
+
+                    <!-- "Telescopic Photo" Section -->
+                    <div id="location" class="relative group">
+                        <!-- Label Removed -->
+                        
+                        <!-- Scope Visual -->
+                        <div class="w-64 h-64 md:w-72 md:h-72 scope-container bg-stone-800">
+                            <!-- Background Image inside Scope -->
+                            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="African Safari Scene" 
+                                 class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition duration-700 ease-in-out">
+                            
+                            <!-- Crosshair Overlay -->
+                            <div class="scope-overlay">
+                                <div class="crosshair-line crosshair-h"></div>
+                                <div class="crosshair-line crosshair-v"></div>
+                                <!-- Range markings -->
+                                <div class="absolute border border-white/30 rounded-full w-3/4 h-3/4"></div>
+                                <div class="absolute border border-white/20 rounded-full w-1/2 h-1/2"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h3 class="text-xl font-bold text-stone-800">South Africa</h3>
+                            <p class="text-xs text-[#c5a059] uppercase tracking-widest">Premium Hunting Grounds</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Sketch Footer Text Section -->
+        <section class="bg-stone-900 text-stone-300 py-16 px-4 text-center" id="contact">
+            <div class="max-w-3xl mx-auto space-y-6">
+                <i data-lucide="compass" class="w-12 h-12 text-[#c5a059] mx-auto mb-4"></i>
+                
+                <h2 class="text-2xl md:text-3xl font-light leading-relaxed">
+                    "GET IN CONTACT WITH US FOR A <span class="text-white font-bold border-b border-[#c5a059] pb-1">LIFETIME EXPERIENCE</span>"
+                </h2>
+                
+                <div class="flex flex-wrap justify-center gap-4 text-sm font-bold uppercase tracking-[0.2em] text-[#c5a059] pt-4">
+                    <span>Lifestyle</span>
+                    <span class="text-stone-600">•</span>
+                    <span>Tradition</span>
+                    <span class="text-stone-600">•</span>
+                    <span>Food</span>
+                    <span class="text-stone-600">•</span>
+                    <span>Country</span>
+                </div>
+
+                <div class="pt-8">
+                    <button class="bg-[#c5a059] text-stone-900 px-10 py-4 font-bold tracking-widest hover:bg-white hover:scale-105 transition transform duration-200">
+                        BOOK YOUR TRIP
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-950 py-8 text-center text-stone-600 text-xs">
+        <p>&copy; 2024 Jager Africa Hunting. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
