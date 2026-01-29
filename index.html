@@ -31,8 +31,9 @@
             position: relative;
             overflow: hidden;
             border-radius: 50%;
-            border: 4px solid var(--brand-dark);
-            box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.8) inset; /* Fallback */
+            border: 2px solid #000; /* Thinner, black border */
+            box-shadow: 0 0 30px rgba(0,0,0,0.5); /* Outer shadow for depth */
+            background-color: #888; /* Grey fallback so it's not black if loading */
         }
 
         .scope-overlay {
@@ -41,7 +42,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.3) 100%);
+            /* SIGNIFICANTLY LIGHTENED VIGNETTE */
+            /* Clear center (60%), very soft dark edges (0.6 alpha) */
+            background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.6) 100%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 10;
@@ -51,7 +54,7 @@
         }
 
         .crosshair-line {
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(0, 0, 0, 0.85); /* Black crosshairs */
             position: absolute;
         }
         
@@ -158,26 +161,22 @@
                 <!-- Right Side: The Map & Telescopic View -->
                 <div class="relative flex flex-col items-center justify-center">
                     
-                    <!-- Map Removed -->
-
                     <!-- "Telescopic Photo" Section -->
                     <div id="location" class="relative group">
-                        <!-- Label Removed -->
-                        
                         <!-- Scope Visual -->
-                        <div class="w-64 h-64 md:w-72 md:h-72 scope-container bg-stone-800">
-                            <!-- Background Image inside Scope -->
-                            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 alt="African Safari Scene" 
-                                 class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition duration-700 ease-in-out">
+                        <div class="w-64 h-64 md:w-72 md:h-72 scope-container">
+                            <!-- Background Image inside Scope: Local 'kudu.jpg' file -->
+                            <!-- INSTRUCTION: Place a file named 'kudu.jpg' in the same folder as this HTML file -->
+                            <img src="kudu.jpg" 
+                                 alt="Greater Kudu Bull" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-1000 ease-out block">
                             
                             <!-- Crosshair Overlay -->
                             <div class="scope-overlay">
                                 <div class="crosshair-line crosshair-h"></div>
                                 <div class="crosshair-line crosshair-v"></div>
-                                <!-- Range markings -->
-                                <div class="absolute border border-white/30 rounded-full w-3/4 h-3/4"></div>
-                                <div class="absolute border border-white/20 rounded-full w-1/2 h-1/2"></div>
+                                <!-- Subtle inner range ring, thinner -->
+                                <div class="absolute border border-black/20 rounded-full w-2/3 h-2/3"></div>
                             </div>
                         </div>
                         <div class="mt-4 text-center">
